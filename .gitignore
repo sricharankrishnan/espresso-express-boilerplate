@@ -1,0 +1,12 @@
+# npm
+node_modules
+package-lock.json
+
+# MAC
+.DS_Store
+
+# Web workbench (sass)
+.sass-cache/
+
+# Application
+logs/*
