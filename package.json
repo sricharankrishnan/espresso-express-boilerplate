@@ -4,7 +4,7 @@
   "description": "A nodejs web server boilerplate enabled with NPM Helmet for application security and ExpressJS, along with other utilities.",
   "main": "server.js",
   "scripts": {
-    "start": "node ./server.js",
+    "start": "node ./server.js"
   },
   "author": "Sricharan Krishnan | https://github.com/sricharankrishnan",
   "dependencies": {

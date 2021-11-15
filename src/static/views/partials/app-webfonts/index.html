@@ -1,0 +1,19 @@
+<!--[reference]: https://github.com/typekit/webfontloader -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script  nonce="<%= csp_nonce %>">
+  var cmbFontConfig = {
+    google: {
+      families: [
+        "Noto Sans JP:100,300,400,500,700,900",
+        "Libre Baskerville:400,700"
+      ]
+    },
+    active: function() {
+      console.log("App Fonts Loaded...");
+    },
+    inactive: function() {
+      console.log("App Fonts Load Err...");
+    }
+  };
+  WebFont.load(cmbFontConfig);
+</script>
