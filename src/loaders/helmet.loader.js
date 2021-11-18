@@ -56,8 +56,17 @@ module.exports = (app) => {
     useDefaults: true,
     directives: {
       'script-src': ['http://localhost:4500', 'https://ajax.googleapis.com', noncer],
-      'img-src': ['http://localhost:4500', 'https://img.shields.io']
+      'img-src': ['http://localhost:4500', 'https://img.shields.io'],
     }
   };
   app.use(helmet.contentSecurityPolicy(cspConfig));      
+
+  /** #12. Sets "Cross-Origin-Opener-Policy: same-origin" to prevent attacks like Spectre **/
+  app.use(helmet.crossOriginOpenerPolicy());
+
+  /** #13. Sets "Cross-Origin-Embedder-Policy: require-corp" **/
+  app.use(helmet.crossOriginEmbedderPolicy());
+
+  /** #14. Sets "Cross-Origin-Resource-Policy: same-origin" **/
+  app.use(helmet.crossOriginResourcePolicy());
 };
