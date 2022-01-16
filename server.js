@@ -20,64 +20,33 @@ let express = require("express");
 require("dotenv").config();
 
 /* app imports */
-let consoleLogger = require(__base + "/utils/logger.js");
+let consoleLogger = require(__base + "/src/utils/logger.js");
 let {PORT} = process.env;
-let appLoaders = require(__base + "/src/loaders/index.loader.js");
-let routes = require(__base + "/src/routes/index.route.js");
-let clusterHandler = require(__base + "/utils/cluster-handler.js");
+let appRoutes = require(__base + "/src/routes/index.route.js");
+let appClusterHandler = require(__base + "/src/utils/cluster-handler.js");
+let appTemplatingEngineLoader = require(__base + "/src/loaders/app-templating-engine.loader.js");
 
-class App {
-  constructor() {
-    this.app = express();
-  }
-
-  /* things start here */
-  static main() {
-    new App().init();
-  }
-
-  /* ok here we go! */
-  init() {
-    let $this = this;
-    $this.appClustering();
-    clusterHandler(cluster);
-  }
-
-  appClustering() {
-    let $this = this;
-
-    /* Espresso targets all possible processors on a server, since node js is single threaded. 
-       Maximizing efficiency with Node Js Cluster Module [Works on production mode to keep the logging simple and easy] */
-    if (cluster.isMaster && process.env.NODE_ENV === "production") {
-      this.master();
-    }
-    else {
-      this.worker();
-    }
-  }
-
-  /* initializes all workers based on the number of processors */
-  master() {
-    let $this = this;
-
+function appCentral() {
+  let app = express();
+  
+  /* improving app performance with node clusters. if master then will spawn 
+     child workers */
+  if (cluster.isMaster && process.env.NODE_ENV === "production") {
     os.cpus().forEach((item) => {
       cluster.fork();
     });
   }
-
-  /* the worker that gets created by the master */
-  worker() {
-    let $this = this;
-    
-    /* app loaders */
-    appLoaders($this.app);
-    /* app routes */
-    routes($this.app);
-
-    /* start the server */
-    $this.app.listen(PORT, function() {
-      consoleLogger("App running @ http://localhost:" + PORT + ". Press CTRL + C to Terminate.");
-    });
+  /* if the instance is a child worker, then will activate these */
+  else {
+    appTemplatingEngineLoader(app);
+    appRoutes(app);
   }
+    
+  //appClusterHandler(cluster);
+  
+  /* start the server */
+  app.listen(PORT, function() {
+    consoleLogger("App running @ http://localhost:" + PORT + ". Press CTRL + C to Terminate.");
+  });
 }
-App.main();
+appCentral();

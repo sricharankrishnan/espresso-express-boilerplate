@@ -5,9 +5,9 @@
 
 /* app imports */
 const __base = global.approot;
-const consoleLogger = require(__base + "/utils/logger.js");
+const consoleLogger = require(__base + "/src/utils/logger.js");
 const { EXPECT_CT_REPORT_URI } = process.env;
-const nonceGenerator = require(__base + "/utils/generate-app-nonce.js");
+const nonceGenerator = require(__base + "/src/utils/generate-app-nonce.js");
 
 /* npm imports */
 let helmet = require("helmet");
@@ -57,6 +57,7 @@ module.exports = (app) => {
     directives: {
       'script-src': ['http://localhost:4500', 'https://ajax.googleapis.com', noncer],
       'img-src': ['http://localhost:4500', 'https://img.shields.io'],
+      "frame-src": ['https://www.youtube.com', 'https://www.choosemybicycle.com']
     }
   };
   app.use(helmet.contentSecurityPolicy(cspConfig));      
@@ -66,7 +67,6 @@ module.exports = (app) => {
 
   /** #13. Sets "Cross-Origin-Embedder-Policy: require-corp" **/
   app.use(helmet.crossOriginEmbedderPolicy());
-
-  /** #14. Sets "Cross-Origin-Resource-Policy: same-origin" **/
-  app.use(helmet.crossOriginResourcePolicy());
+  /* As of 2021, you can choose to opt out of this feature as this might break your app. If there is a
+     report only mode available, you can choose to use that */
 };

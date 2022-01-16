@@ -4,8 +4,8 @@
 
 /* app imports */
 const __base = global.approot;
-const consoleLogger = require(__base + "/utils/logger.js");
-const HandlerTemplate = require(__base + "/utils/handler-template.js");
+const consoleLogger = require(__base + "/src/utils/logger.js");
+const HandlerTemplate = require(__base + "/src/utils/handler-template.js");
 const buildInternalErrorMeta = require("../service/internal-server-error-meta.js");
 
 class Handler extends HandlerTemplate {

@@ -4,7 +4,7 @@
   **/
 
 const __base = global.approot;
-const consoleLogger = require(__base + "/utils/logger.js");
+const consoleLogger = require("./logger.js");
 
 class HandlerTemplate {  
   constructor(req, res) {

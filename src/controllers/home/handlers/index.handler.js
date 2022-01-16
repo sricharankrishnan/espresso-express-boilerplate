@@ -1,8 +1,8 @@
 /* app imports */
 const __base = global.approot;
-const consoleLogger = require(__base + "/utils/logger.js");
-const HandlerTemplate = require(__base + "/utils/handler-template.js");
-const setCookie = require(__base + "/utils/app-cookie-builder.js")();
+const consoleLogger = require(__base + "/src/utils/logger.js");
+const HandlerTemplate = require(__base + "/src/utils/handler-template.js");
+const setCookie = require(__base + "/src/utils/app-cookie-builder.js")();
 const sampleService = require("../service/sample.service.js");
 
 class Handler extends HandlerTemplate {

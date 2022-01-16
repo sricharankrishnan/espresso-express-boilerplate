@@ -1,9 +1,9 @@
 # Espresso Uses NodeJS Cluster Module
-Espresso uses the nodejs cluster module, due to the fact that by default NodeJS runs on a single thread. Although this may be sufficient, there are cases where up scaling your application's performance by using the cluster module can help. This is a simple but and effective way by which your application can use all the available processors in your host environment/server.
+Espresso uses the nodejs cluster module since NodeJS runs on a single thread. The NodeJS Cluster module is a simple yet effective way to help improve the performance of your application. Through this module, your application will be able to maximize on utilizing the number of CPU processors of your host environment.
 <br/><br/>
 
 ## What's Inside
-Please note that the cluster module becomes active only on production mode. It has been intentionally done this way to keep the terminal logs user friendly during development. Otherwise you many need to sift through piles of logs when you spend time developing your application or making changes. The cluster module along with the OS module are initially imported in the ```server.js``` file:
+The cluster module becomes active only when the application NODE_ENV is set to "production". The intention behind this is to keep terminal logs minimal and user friendly during development. The cluster module along with the OS module are initially imported in the ```server.js``` file:
 ```js
 let cluster = require("cluster");
 let os = require("os");
@@ -55,7 +55,7 @@ worker() {
     /* clusterHandler(cluster); */
   }
 ```
-<br/>Yup as simple as that!
+<br/>With this, you can help provide a boost to your application performance. Consider stress testing this to check the difference between applications that do and do not use cluster module.
 
 ## Conclusion
-There are quite a few articles on the internet that I have come across that have help me understand this. But I think [Node.js Cluster and Express @ Rowan Manning](https://rowanmanning.com/posts/node-cluster-and-express/) does a pretty good job of explaining this. I would also recommend that you take a look at [NodeJS Cluster Events](https://nodejs.org/api/cluster.html) for more information. Cheers.
+[Node.js Cluster and Express @ Rowan Manning](https://rowanmanning.com/posts/node-cluster-and-express/) is a good reference available to understand how to use the NodeJS Cluster module. Also, [NodeJS Cluster Events](https://nodejs.org/api/cluster.html) provides more information that can be useful.

@@ -5,7 +5,7 @@ const express = require("express");
 
 /* app imports */
 const __base = global.approot;
-const consoleLogger = require(__base + "/utils/logger.js");
+const consoleLogger = require(__base + "/src/utils/logger.js");
 
 /**
   * this file helps to serve all the static file requirements for the web app

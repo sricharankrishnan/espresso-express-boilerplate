@@ -9,7 +9,7 @@ require("dotenv").config();
 
 /* app imports */
 const __base = global.approot;
-const consoleLogger = require(__base + "/utils/logger.js");
+const consoleLogger = require(__base + "/src/utils/logger.js");
 
 module.exports = (app) => {
   consoleLogger("Initializing HTTP to HTTPS Redirect Loader (Not Applicable if Localhost)...");

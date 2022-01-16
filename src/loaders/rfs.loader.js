@@ -14,9 +14,10 @@ module.exports = () => {
   /* configurations for the rotation */
   const rfsConfig = {
     interval: "1d",
-    path: __base + "/logs",
-    size: "5M",
-    maxFiles: 100
+    path: __base + "/src/logs",
+    size: "100MB",
+    maxFiles: 15,
+    maxSize: "2GB"
   };
   
   /* helps to generate the file name */
