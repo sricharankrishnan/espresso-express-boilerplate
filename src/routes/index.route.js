@@ -1,10 +1,9 @@
 /* app imports */
-const __base = global.approot;
-const appMiddlewares = require("../middleware/app.middleware.js");
+const appMiddlewares = require('../middleware/app.middleware');
 
 /* routes imports */
-const home = require("./home/index.route.js");
-const notFound = require("./not-found/index.route.js");
+const home = require('./home/index.route');
+const notFound = require('./not-found/index.route');
 
 /* list and invoke all routes from this point */
 module.exports = (app) => {

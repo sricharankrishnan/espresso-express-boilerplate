@@ -4,7 +4,9 @@
   "description": "A nodejs web server boilerplate enabled with NPM Helmet for application security and ExpressJS, along with other utilities.",
   "main": "server.js",
   "scripts": {
-    "start": "node ./server.js"
+    "start": "node ./server.js",
+    "lint": "npx eslint ./server.js ./src",
+    "lint-fix": "npx eslint --fix ./server.js ./src"
   },
   "author": "Sricharan Krishnan | https://github.com/sricharankrishnan",
   "dependencies": {
@@ -25,6 +27,9 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
     "nodemon": "^2.0.2"
   },
   "license": "MIT"

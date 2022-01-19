@@ -1,0 +1,6 @@
+node_modules
+docs/*
+shots/*
+src/logs/*
+src/public/*
+src/static/*

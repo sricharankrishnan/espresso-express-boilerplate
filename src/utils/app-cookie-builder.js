@@ -1,60 +1,55 @@
 /**
-  * initializes the cookie builder process for the app. ideally this 
-  * should be used when you would like to send cookies to the client side. Helps to 
-  * build Unsigned and Signed cookies 
-  **/
+ * initializes the cookie builder process for the app. ideally this
+ * should be used when you would like to send cookies to the client side. Helps to
+ * build Unsigned and Signed cookies
+ * */
 /* app imports */
-const __base = global.approot;
-const consoleLogger = require("./logger.js");
+const consoleLogger = require('./logger');
 
 /* npm imports */
-require("dotenv").config();
+require('dotenv').config();
 
-module.exports = (app) => {
-  let {NODE_ENV} = process.env; 
-  
+module.exports = () => {
+  const { NODE_ENV } = process.env;
+
   /* always the default configuration. you can change this to suit your preference */
   const oneHourInMilliseconds = 3600000;
-  let defaultCookieConfig = {
+  const defaultCookieConfig = {
     httpOnly: false,
     maxAge: 1 * oneHourInMilliseconds,
-    path: "/",
-    secure: NODE_ENV === "development" ? false : true,
+    path: '/',
+    secure: NODE_ENV !== 'development',
     signed: false,
-    sameSite: "strict"
+    sameSite: 'strict',
   };
 
   return (res, props) => {
-    let {cookieName, cookieValue, cookieOptions} = props;
+    const { cookieName, cookieValue, cookieOptions } = props;
     let errorText;
-    
-    if (typeof cookieName !== "string") {
+
+    if (typeof cookieName !== 'string') {
       errorText = "App Cookie Setter: 'cookieName' is not of 'string' type";
       consoleLogger(errorText);
       throw new Error(errorText);
-    }
-    else if (!cookieValue) {
+    } else if (!cookieValue) {
       errorText = "App Cookie Setter: 'cookieValue' seems to be missing. Check!?";
       consoleLogger(errorText);
       throw new Error(errorText);
-    }
-    else {
+    } else {
       /* create a fresh clone of the existing default config for cookies */
-      let config = Object.assign({}, defaultCookieConfig);
+      const config = { ...defaultCookieConfig };
 
       /* if you have cookie options, then merge the values with the config object */
-      if (Object.prototype.toString.call(cookieOptions) === "[object Object]"
-          && Object.keys(cookieOptions).length > 0 
-          && cookieOptions.constructor === Object) {
-
-        for (let prop in cookieOptions) {
-          if (cookieOptions.hasOwnProperty(prop)) {
-            config[prop] = cookieOptions[prop];
-          }
-        }
+      if (
+        Object.prototype.toString.call(cookieOptions) === '[object Object]'
+        && Object.keys(cookieOptions).length > 0
+        && cookieOptions.constructor === Object
+      ) {
+        const arrayOfObjKeys = Object.keys(cookieOptions);
+        arrayOfObjKeys.forEach((key) => {
+          config[key] = cookieOptions[key];
+        });
       }
-
-      console.log(config);
 
       /* set the cookie as required */
       res.cookie(cookieName, cookieValue, config);
