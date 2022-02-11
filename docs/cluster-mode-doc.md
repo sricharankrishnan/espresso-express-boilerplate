@@ -1,5 +1,5 @@
 # Espresso Uses NodeJS Cluster Module
-Espresso uses the nodejs cluster module since NodeJS runs on a single thread. The NodeJS Cluster module is a simple yet effective way to help improve the performance of your application. Through this module, your application will be able to maximize on utilizing the number of CPU processors of your host environment.
+Espresso uses the node.js cluster module since node.js runs on a single thread. The node.js Cluster module is a simple yet effective way to help improve the performance of your application. Through this module, your application will be able to maximize on utilizing the number of CPU processors of your host environment.
 <br/><br/>
 
 ## What's Inside
