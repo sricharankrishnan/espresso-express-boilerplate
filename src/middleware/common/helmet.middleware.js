@@ -60,7 +60,6 @@ module.exports = (app) => {
     directives: {
       'script-src': ['http://localhost:4500', 'https://ajax.googleapis.com', noncer],
       'img-src': ['http://localhost:4500', 'https://img.shields.io'],
-      'frame-src': ['https://www.youtube.com', 'https://www.choosemybicycle.com'],
     },
   };
   app.use(helmet.contentSecurityPolicy(cspConfig));
