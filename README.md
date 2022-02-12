@@ -2,7 +2,7 @@
 ![Espresso - The Express Boilerplate](https://github.com/sricharankrishnan/espresso-express-boilerplate/blob/master/shots/welcome-screen.gif?raw=true "Espresso - The Express Boilerplate")
 
 ## About
-Espresso is an open source project that serves as a scaffold, to aid developers with a quick start in building web applications with node.js. The backend framework used in espresso is Express.js due to its minimalistic nature. This project comes with certain pre selected NPM pacakges reducing time to collect and assemble a node.js web server.
+Espresso is an open source project that serves as a scaffold, to aid developers with a quick start in building web applications with node.js. The backend framework used in espresso is Express.js due to its minimalistic nature. This project comes with certain pre selected NPM pacakges reducing time to collect and assemble a node.js web server. To know more and read the docs for this scaffold project, [click here](https://github.com/sricharankrishnan/espresso-express-boilerplate/tree/master/docs).
 
 ## Objectives
 + Structured and opiniated approach to web application developement with predefined folder structures and file naming conventions
