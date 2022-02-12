@@ -28,4 +28,7 @@ Files that need to be publicly accessible are stored in this directory. Example 
 Files in this directory follow the ```[file-name].route.js``` naming convention. The directory contains all programs that help manage the various routes of the web application. There are no specific standards for folder structures in this directory however, you can refer to the example structure proposed in the scaffold at [this place](https://github.com/sricharankrishnan/espresso-express-boilerplate/tree/master/src/routes).
 
 ### ./src/static
-This directory houses all frontend related assets for the web application. [EJS](https://ejs.co/)
+This directory houses all frontend related assets for the web application. [EJS](https://ejs.co/) is the templating engine that espresso uses and the folder structured offered in the static directory is an example of how frontend related assets can be organized for a node.js web application. You can view the static directory for the scaffold [here](https://github.com/sricharankrishnan/espresso-express-boilerplate/tree/master/src/static). Furthermore, you an re-arrange the directory structure as per project requirements if this layout is not suitable.
+
+### ./src/utils
+Files in the utils directory do not follow any specific file naming convention. Any program that is meant to be globally imported in the form of a convenient functional interface can be placed here. For example, to create web cookies, you can import the ```./src/utils/app-cookie-builder.js``` file and pass in arguments as required to create cookies. Sample applies for the ```./src/utils/logger.js``` file.
